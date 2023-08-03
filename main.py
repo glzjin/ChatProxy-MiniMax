@@ -38,12 +38,15 @@ async def proxy(request: Request):
             if message["role"] == "system":
                 prompt += message["content"] + "\n"
             elif message["role"] == "assistant":
-                messages_to_send.append({
+                single_message = {
                     "sender_type": "BOT",
                     "sender_name": "MM智能助理",
-                    "text": message.get("content", ""),
-                    "function_call": message.get("function_call", {})
-                })
+                    "text": message.get("content", "")
+                }
+                if "function_call" in message:
+                    single_message['function_call'] = message["function_call"]
+                messages_to_send.append(single_message)
+
             elif message["role"] == "function":
                 messages_to_send.append({
                     "sender_type": "FUNCTION",
@@ -108,6 +111,8 @@ async def proxy(request: Request):
                                         }
                                         if "finish_reason" in c:
                                             single_choice["finish_reason"] = c["finish_reason"]
+                                            if single_choice["finish_reason"] == "stop":
+                                                single_choice['delta'] = {}
                                         if "function_call" in m:
                                             single_choice["delta"]["function_call"] = {}
                                             if "name" in m["function_call"]:
@@ -230,6 +235,8 @@ async def proxy(request: Request):
                                     }
                                     if "finish_reason" in c:
                                         single_choice["finish_reason"] = c["finish_reason"]
+                                        if single_choice["finish_reason"] == "stop":
+                                            single_choice['delta'] = {}
                                     stream_choices.append(single_choice)
                                 send_resp_data = json.dumps({
                                     "id": request_id,
