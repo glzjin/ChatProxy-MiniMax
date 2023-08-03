@@ -1,6 +1,8 @@
 # ChatProxy-MiniMax
 用于将 MiniMax 接口转换为 OpenAI API接口。
 
+接口申请地址：https://api.minimax.chat/
+
 ## 使用方法
 
 1. 在自己的机器上用 Docker 进行部署。
