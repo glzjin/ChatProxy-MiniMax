@@ -24,7 +24,7 @@ minimax-api.*.com {
 }
 ```
 
-3. 在 One API 中进行渠道设置。
+3. 在 (One API)[https://github.com/songquanpeng/one-api] 中进行渠道设置。
 
 ![image](https://github.com/glzjin/ChatProxy-MiniMax/assets/7975407/880a3572-184c-4185-a4ca-557f192aa443)
 
@@ -47,6 +47,10 @@ minimax-api.*.com {
    ![image](https://github.com/glzjin/ChatProxy-MiniMax/assets/7975407/900ef3ea-f03f-445b-aac1-0e4460f64139)
 
    非流的费用全部记到补全那里了。
+
+## 感谢
+
+- (One API)[https://github.com/songquanpeng/one-api]
 
 
 
